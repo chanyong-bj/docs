@@ -2,27 +2,12 @@
 ===
 
 ###简介
-这个文档是将django的项目移植到nginx上面，网上总结的也很多。  
-但是为什么要做这个工作呢？  
-1. django只是一个快速搭建web的框架，具体部署还得放到HTTP server上面  
-2. nginx网传性能很好，而且几家大公司也开始用这个，因此最近它比apache的httpserver要火
 
-虽然django项目部署到nginx有很多方法，这里单单使用uWSGI。  
-
-对于static文件（html,css,image等）可以直接访问文件系统将内容显示到httpserver中，但是对于django的项目却不行，server需要一些东西来跑django的应用，通过请求反馈响应。这就需要使用
-[WSGI](http://wsgi.org/)（Web Server Gateway Interface），它是一种python的协议，解释web server如何和web应用（如django应用）沟通。
-
-uWSGI是WSGI协议的实现。  
-
-最终我们要实现的是如下结构：
+最终结构：
 
     the web client <-> the web server <-> the socket <-> uwsgi <-> Django
 
 ###具体步骤
-#####假设你已经知道
-1. 这里假设已经会使用django创建应用
-2. 并且已经基本熟悉nginx的配置
-3. 熟悉pip安装python库
 
 #####安装uwsgi
 
