@@ -23,4 +23,19 @@ Web Clipboard
 
 1. 查看 用户密码设置代码 
 
+### 2014-11-13 [Django Caching framework]
+Django comes with a robust cache system that lets you save dynamic pages so they don’t have to be calculated for each request. 
+* Django 支持不同粒度的cache设置：单个view输出、部分计算结果(例如，部分的template内容)或整个site
+    - settings.py 中设置 CACHE_BACKEND
+    
+    - Django 提供了低层次 cache 接口，以实现对PY对象的 caching
+        * django.core.cache.cache.get()/set()/add()
+
+
+
+
+
+
+
+
 
