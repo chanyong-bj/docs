@@ -9,12 +9,12 @@
 
 ----
 
-1. 安装依赖
+### 安装依赖
 ```
 	apt-get install python-dev libjpeg-dev libjpeg8-dev libpng3 libfreetype6-dev zlib1g-dev
 ```
 
-2. 创建链接
+### 创建链接
 ```
 	ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib
 	ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib/
@@ -22,13 +22,14 @@
 	ln -s /usr/include/freetype2 /usr/include/freetype
 ```
 
-3. 下载 PIL 源码，解压，编译 http://www.pythonware.com/products/pil/
+### 下载 PIL 源码，解压，编译 http://www.pythonware.com/products/pil/
+
 ```
 	python setup.py build_ext -i 
 ```
 
-4. 测试
+### 测试
 ```python selftest.py```
 	
-5. 安装 
+### 安装 
 ```python setup.py install```
