@@ -34,7 +34,7 @@ LDAP中重要的概念:
 
 	127.0.1.1 {hostname}.wangan.org.cn {hostname}
 
-例如，将 hostname 设置为 openldap
+例如，将 hostname 设置为 ```openldap```
 
 	$ sudo apt-get install slapd ldap-utils
 
@@ -78,14 +78,14 @@ objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: shadowAccount
 uid: cy
-sn: Chen
-givenName: Yang
-cn: CHEN YANG
-displayName: ChenYANG
+sn: Chan
+givenName: Yong
+cn: ChanYong
+displayName: ChanYONG
 uidNumber: 10000
 gidNumber: 5000
 userPassword: asdf1234
-gecos: CHEN YANG
+gecos: Chan YONG
 loginShell: /bin/bash
 homeDirectory: /home/chenyang
 
@@ -133,10 +133,13 @@ ldapsearch 搜索添加结果：
 
 Apache2 reload 配置后， Web 访问 phpldapadmin 页面
 
+![phpldapadmin_login](https://github.com/chanyong-bj/docs/blob/master/pic/openldap_1.png)
 
 在 phpldapadmin 上查看之前命令行添加的用户
 
+![phpldapadmin_search](https://github.com/chanyong-bj/docs/blob/master/pic/phpldapadmin_1.png)
 
+设置了两个用户 ```cy``` 和 ```gitter```：前者用于 gitlab 连接 openldap；后者用于登录测试
 
 #### Configure gitlab
 
@@ -177,6 +180,10 @@ EOS
 * password 指定连接openldap的账户密码
 
 另，需注意 allow_username_or_login 配置的说明
+
+##### Other configs
+
+Gitlab 已有用户[以 LDAP 方式验证登录](http://doc.gitlab.com/ce/integration/ldap.html#enabling-ldap-sign-in-for-existing-gitlab-users)，关键是两个账号需要设置一致的Email
 
 #### Refs
 
