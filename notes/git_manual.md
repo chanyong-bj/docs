@@ -1,26 +1,26 @@
 
-#### git 基本快照操作
+#### git 快照基本操作
 
-`git diff`
+##### `git diff`
 
 	- `git diff` # 查看尚未缓存的修改，即比较最近一次提交后版本库与当前**尚未缓存**的所有修改 
 	- `git diff <file>`  # 对比文件`<file>`工作区与版本库差异
 	- `git diff --cached` 和 `git diff --staged` # 对比缓存区与版本库差异 
 	- `git diff HEAD` # 对比缓存区与工作区相对于版本库的所有修改
 
-`git reset HEAD -- file`
+##### `git reset HEAD -- file`
 
 **`unstage`**功能，取消文件 file 的缓存「工作区文件 file 在命令前后不会更改，因为此时缓存与工作区内容是一致的」
 
 * 实际的操作是将该文件在缓存区中的校验和重置为最近一次提交中的值
 
-`git checkout -- file`
+##### `git checkout -- file`
 
 **撤销 file 在工作区的修改**，或者是**丢弃file在当前工作区中的修改**，恢复至最近一次 `git add` 或 `git commit`后的状态
 
 * 用版本库里的版本替换工作区的版本，无论工作区中对文件的操作是修改还是删除
 
-`git rm <file>`
+##### `git rm <file>`
 
 默认情况，将`<file>`从缓存区和工作区完全删除，即从当前跟踪列表中移除文件`<file>`
 
@@ -72,6 +72,7 @@ Git 版本库中通过类似指针的`分支名`以及 HEAD，管理版本库分
 - `git remote add <alias>` 配置远程仓库
 - `git fetch <alias>` 更新远程仓库及其分支
 
+```
 	$ git fetch github
 	remote: Counting objects: 4006, done.
 	remote: Compressing objects: 100% (1322/1322), done.
@@ -84,6 +85,7 @@ Git 版本库中通过类似指针的`分支名`以及 HEAD，管理版本库分
 	   6684f82..ae06d2b  java       -> github/java
 	 * [new branch]      ada        -> github/ada
 	 * [new branch]      lisp       -> github/lisp
+```
 
 示例中，从远程仓库新增加了5个分支，并且分别映射为本地名为`github/<branch_name>`的分支。
 
