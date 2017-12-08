@@ -32,7 +32,7 @@ LDAP中重要的概念:
 
 根据 Ubuntu 官方的文档，需要先设置本机域名 /etc/hosts:
 
-	127.0.1.1 {hostname}.wangan.org.cn {hostname}
+	127.0.1.1 {host_FQDN} {hostname}
 
 例如，将 hostname 设置为 ```openldap```
 
@@ -73,21 +73,21 @@ dn: ou=Groups,dc=wangan,dc=org,dc=cn
 objectClass: organizationalUnit
 ou: Groups
 
-dn: uid=cy,ou=Developer,dc=wangan,dc=org,dc=cn
+dn: uid=foo,ou=Developer,dc=wangan,dc=org,dc=cn
 objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: shadowAccount
-uid: cy
-sn: Chan
-givenName: Yong
-cn: ChanYong
-displayName: ChanYONG
+uid: foo
+sn: Foo
+givenName: Play
+cn: FooPlay
+displayName: FooPlay
 uidNumber: 10000
 gidNumber: 5000
-userPassword: asdf1234
-gecos: Chan YONG
+userPassword: *****
+gecos: Foo Play
 loginShell: /bin/bash
-homeDirectory: /home/chenyang
+homeDirectory: /home/foo
 
 dn: uid=gitter,ou=Developer,dc=wangan,dc=org,dc=cn
 objectClass: inetOrgPerson
@@ -139,7 +139,7 @@ Apache2 reload 配置后， Web 访问 phpldapadmin 页面
 
 ![phpldapadmin_search](https://github.com/chanyong-bj/docs/blob/master/pic/phpldapadmin_1.png)
 
-设置了两个用户 ```cy``` 和 ```gitter```：前者用于 gitlab 连接 openldap；后者用于登录测试
+设置了两个用户 ```foo``` 和 ```gitter```：前者用于 gitlab 连接 openldap；后者用于登录测试
 
 #### Configure gitlab
 
@@ -156,12 +156,12 @@ gitlab_rails['ldap_servers'] = YAML.load <<-'EOS' # remember to close this block
 main: # 'main' is the GitLab 'provider ID' of this LDAP server
   label: 'LDAP'
 
-  host: 'ubuntu1404VM001.wangan.org.cn'
+  host: '{serverhost_FQDN}'
   port: 389
   uid: 'uid'
   method: 'plain'
-  bind_dn: 'uid=cy,ou=Developer,dc=wangan,dc=org,dc=cn'
-  password: 'asdf1234'
+  bind_dn: 'uid=foo,ou=Developer,dc=wangan,dc=org,dc=cn'
+  password: '******'
 
   active_directory: false
   allow_username_or_login: true
@@ -179,7 +179,7 @@ EOS
 * bind_dn 指定连接openldap的帐号
 * password 指定连接openldap的账户密码
 
-另，需注意 allow_username_or_login 配置的说明
+另，需注意 allow\_username\_or\_login 配置的说明
 
 ##### Other configs
 
